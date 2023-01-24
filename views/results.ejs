@@ -1,0 +1,125 @@
+<%- include ('./base.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Attendance Cost</title>
+        <link rel="stylesheet" href="css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=0.85">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Roboto+Slab&display=swap" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+      <div class = "flex-wrap">
+      <div class = "container">
+        <div>
+            <pre>  </pre>
+        </div>
+        <div tabindex="0" class="d-flex justify-content-center">
+        <img src="https://engageduva.virginia.edu/sites/engageduva.virginia.edu/files/uva_logo_primary_0.png" alt="" height="125" width="480">
+        </div>
+        <div>
+            <pre> </pre>
+        </div>
+        <div tabindex="0" class="d-flex justify-content-center" >
+            <div class="text-right">
+              <table class="table table-borderless" style="border: 2px solid #CECECE;">
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td><h2 class = "text-end">Estimated net price for</h2><h2 class ="text-end">Academic Year 2021-2022</h2></td>
+                    <td><h1 class = "display-3"><%=sum%></h1></td>
+                  </tr>
+
+                </tbody>
+              </table>
+                  </div>
+                </div>
+
+        <div class="container">
+            <h3 class = "fs-3">Estimated Cost of Attendance</h3>
+            <h4>
+              <i>The costs listed are for estimation purposes only.</i>
+                </h4>
+             <table class="table">
+              <thead><tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td>Tuition and Fees</td>
+                  <td><%=selectedSchool%>, <%=selectedYear%>-Year, <%=selectedResidency%></td>
+                  <td><%=tuition_c%></td>
+                </tr>
+                <tr>
+                  <td>Room & Board</td>
+                  <td><%=housing%></td>
+                  <td><%=housing_c%></td>
+                </tr>
+                <tr>
+                  <td>Dining</td>
+                  <td><%=dining%> Meal Plan</td>
+                  <td><%=dining_c%></td>
+                </tr>
+                <tr>
+                    <td>Books & Supplies</td>
+                    <td><%=books%></td>
+                    <td><%=books_c%></td>
+                  </tr>
+                  <tr>
+                    <td>Transportation</td>
+                    <td>From <%=selectedTravel%> to Charlottesville, VA</td>
+                    <td><%=travel_c%></td>
+                  </tr>
+                  <tr>
+                    <td>Personal Expenses</td>
+                    <td><%=misc%></td>
+                    <td><%=misc_c%></td>
+                  </tr>
+                  <tr>
+                    <td>Scholarships & Financial Aid</td>
+                    <td><%=faid%></td>
+                    <td>-<%=faid_a%></td>
+                  </tr>
+                  <tr>
+                    <td><b>Total</b></td>
+                    <td></td>
+                    <td><b><%=sum%></b></td>
+                  </tr>
+              </tbody>
+              <tfoot><tr>
+                <tf scope="col"></tf>
+                <tf scope="col"></tf>
+                <tf scope="col"></tf>
+              </tr></tfoot>
+            </table>
+          </div>
+
+              <!--print this page or save as pdf button near bottom of page-->
+              <div class="text-center">
+              <input type="button" value="Save results as PDF" onClick="window.print()">
+            </div>
+            <br></br>     
+        </div>
+
+        
+          <div id = "footer" class = "footer">
+            <footer class = "p-1 text-center" style="background-color: #232D4B;">
+              <div class = "container">
+              <p class = "lead text-white" style = "font-family: libre franklin">
+                &copy; UVA Development Hub 2021
+              </p>
+            </div>
+            </footer>
+          </div>
+          </div>
+    </body>
+
+    
+</html>

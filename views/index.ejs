@@ -1,0 +1,722 @@
+<%- include ('./base.ejs') -%>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=0.75">
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Roboto+Slab&display=swap"
+        rel="stylesheet">
+
+
+      <title>UVA Cost of Attendance</title>
+      <link rel="stylesheet" href="css/main.css">
+      <div class="d-flex flex-column min-vh-100 align-items-center">
+        <div>
+          <pre>  </pre>
+        </div>
+        <img
+          src="https://engageduva.virginia.edu/sites/engageduva.virginia.edu/files/uva_logo_primary_0.png"
+          alt="" height="125" width="480">
+        <div>
+          <pre>  </pre>
+        </div>
+
+        <script>
+    //data validation and alert message
+
+    function checkValid() {
+    
+      //holds things needed to be printed out if invalid
+      var requiredVal = "";
+      var currencyVal = "";
+      //holds format for currency validation
+      var currencyFormat = /^\d+(\.\d{1,2})?$/;
+
+      //To make sure the first-year values can be passed
+      document.getElementById('dining').removeAttribute('disabled');
+      document.getElementById('housing').removeAttribute('disabled');
+
+      //school field validation
+      var x = document.forms["form"]["school"].value; 
+      if (x == "0") {
+        requiredVal += "-School" + "\n ";
+      }
+      //year field validation
+      var x = document.forms['form']["year"].value;
+      if (x == "") {
+        requiredVal += "-Year" + "\n ";
+
+      }
+      //residency field validation
+      var x = document.forms['form']['residency'].value;
+      if (x == "") {
+        requiredVal += "-Residency" + "\n ";
+
+      }
+      //housing field validation
+      var x = document.forms['form']['housing'].value;
+      if (x == "0") {
+        requiredVal += "-Housing" + "\n ";
+
+      }
+      else if (x == "On-Grounds Upperclassmen"){
+        var x = document.forms['form']['ongroundshousing'].value;
+        if (x == '0') {
+          requiredVal += "-On-grounds housing for upperclassmen" + "\n ";
+        }
+      }
+      else if (x == "customHousing"){
+        var x = document.forms['form']['housing_custom_text_input'].value;
+        if (x == '') {
+          requiredVal += "-Housing custom input" + "\n ";
+        }
+        //checks if custom input format is valid
+        else if((currencyFormat.test(x) !== true)||(x>1000000)){
+         currencyVal += "-Housing custom input" + "\n ";
+      }
+      }
+    
+      //books field validation
+      var x = document.forms['form']['books'].value;
+      if (x == '') {
+        requiredVal += "-Books" + "\n ";
+
+      }
+      else if (x == "customBooks"){
+        var x = document.forms['form']['books_custom_text_input'].value;
+        if (x == '') {
+          requiredVal += "-Books custom input" + "\n ";
+        }
+        //checks if custom input format is valid
+        else if((currencyFormat.test(x) !== true)||(x>1000000)){
+      currencyVal += "-Books custom input" + "\n ";
+      }
+      }
+      //travel field validation
+      var x = document.forms['form']['travel'].value;
+      if (x == '0') {
+        requiredVal += "-Travel" + "\n ";
+      }
+      else if(x == "International"){
+        var x = document.forms['form']['state_custom_text_input'].value;
+        if (x == "") {
+          requiredVal += "-Travel custom input" + "\n ";
+        }
+        //checks if custom input format is valid
+        else if((currencyFormat.test(x) !== true)||(x>1000000)){
+        currencyVal += "-Travel custom input" + "\n ";
+      }
+      }
+      //dining field validation
+      var x = document.forms['form']['dining'].value;
+      if (x == "0") {
+        requiredVal += "-Dining" + "\n ";
+      }
+      else if(x == "customDining"){
+        var x = document.forms['form']['dining_custom_text_input'].value;
+        if (x == "") {
+          requiredVal += "-Dining custom input" + "\n ";
+        }
+        //checks if custom input format is valid
+        else if((currencyFormat.test(x) !== true)||(x>1000000)){
+        currencyVal += "-Dining custom input" + "\n ";
+      }
+      }
+      //misc field validation
+      var x = document.forms['form']['misc'].value;
+      if (x == '') {
+        requiredVal += "-Misc" + "\n ";
+      }
+      else if(x == "customMisc"){
+        var x = document.forms['form']['misc_custom_text_input'].value;
+        if (x == "") {
+          requiredVal += "-Misc custom input" + "\n ";
+        }
+        //checks if custom input format is valid
+        else if((currencyFormat.test(x) !== true)||(x>1000000)){
+        currencyVal += "-Misc custom input" + "\n ";
+      }
+      }
+      //checks if any field is still unfilled
+      if (requiredVal !== "") {
+        requiredVal = "Please check that all required fields are filled out:" + "\n " + requiredVal;
+        
+      }
+      //check if any field has invalid amount and sends out alert for all validations then returns false
+      if (currencyVal !== ""){
+        alert(requiredVal + "\n" + "Please check that all \"custom input\" values are numbers between 0 and 1,000,000:" + "\n " + currencyVal);
+        return false;
+      }
+      //checks again if passes currency validation but not required fields
+      else if (requiredVal !== ""){
+        alert(requiredVal);
+        return false;
+      }
+      //otherwise, return true
+      return true;
+    }
+  </script>
+        <body>
+
+          <!-- form submits data to /results via GET request -->
+          <!-- School-->
+          <div class="d-flex flex-column min-vh-100 justify-content-center
+            align-items-center">
+
+            <div class="badge badge-primary text-wrap" style="width: 32rem;
+              text-align: left;">
+              <p>Please fill out all of the required
+                fields on the form below and click submit to receive your yearly
+                personalized tuition estimate. If you would like to input your own cost, please choose "Enter Cost".</p>
+            </div>
+
+            <form action="results" onsubmit="return checkValid()" method="get"
+              name="form">
+              <!-- top of document notifying required fields are in asterisks-->
+              <div class="asterisk" style="padding-bottom: 5px"><label
+                  style="color:#232D4B"> = required field</label>
+              </div>
+
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                viewBox="0 0 24 24" fill="none" stroke="#232D4B"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path
+                  d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2
+                  2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4"
+                  rx="1" ry="1"></rect></svg>
+              <p class="requiredField">School of Enrollment: </p>
+              <select class="custom-select" id="school" name="school"
+                style="width: 485px;">
+                <option value="0">Select School</option>
+                <option value="College of Arts and Sciences">College of Arts and Sciences</option>
+                <option value="School of Architecture">School of Architecture</option>
+                <option value="School of Education and Human Development">School of Education and Human Development</option>
+                <option value="School of Commerce (McIntire)">School of Commerce (McIntire)</option>
+                <option value="School of Engineering and Applied Science">School of Engineering and Applied Science</option>
+                <option value="School of Leadership and Public Policy (Batten)">School of Leadership and Public Policy (Batten)</option>
+                <option value="School of Nursing">School of Nursing</option>
+              </select>
+
+              <br>
+              <hr/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="#232D4B"
+                  stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2
+                    0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect
+                    x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                <p class="requiredField">Year of Enrollment: </p>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="First" name="year" value="First">
+                  <label class="form-check-label" for="First">First</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="Second" name="year" value="Second">
+                  <label class="form-check-label" for="Second">Second</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="Third" name="year" value="Third">
+                  <label class="form-check-label" for="Third">Third</label><br>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="Fourth" name="year" value="Fourth">
+                  <label class="form-check-label" for="Fourth">Fourth</label><br>
+                </div>
+
+
+                <hr/>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    viewBox="0 0 24 24" fill="none" stroke="#232D4B"
+                    stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2
+                      2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect
+                      x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                  <p class="requiredField">Residency Status: </p>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="Virginian" name="residency" value="Virginian">
+                    <label class="form-check-label" for="Virginian">Virginian</label><br>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="Non-Virginian" name="residency" value="Non-Virginian">
+                    <label class="form-check-label" for="Non-Virginian">Non-Virginian</label><br>
+                  </div>
+
+                  <hr/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                      height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="#232D4B" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0
+                        1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9
+                        12 15 12 15 22"></polyline></svg>
+                    <div class="mb-2">
+                      <p class="requiredField">Room & Board Cost: </p>
+                      <h4>First-year students must choose 'On-Grounds
+                        First Year'.</h4>
+                      <select class="custom-select" name="housing"
+                        id="housing" style="width: 485px">
+                        <option value="0">Select Housing</option>
+                        <option value="On-Grounds First Year">On-Grounds First Year</option>
+                        <option value="On-Grounds Upperclassmen">On-Grounds Upperclassmen</option>
+                        <option value="Off-Grounds Upperclassmen Estimated Cost">Off-Grounds Upperclassmen (crowd-sourced estimate)</option>
+                        <option value="customHousing">Off-Grounds Upperclassmen (Enter Cost)</option>
+                      </select>
+                    </div>
+
+
+                    <p class="requiredField" id="housinguppertext"
+                      style="display:none">Select your housing area.
+                    </p>
+                    <select class="custom-select"
+                      name="ongroundshousing"
+                      id="ongroundshousing" style="display:none"
+                      style="width: 485px">
+                      <option value="0">Select Housing Area</option>
+                      <option value="Bice, Lambeth, or Language House Double">Bice, Lambeth, or Language House Double</option>
+                      <option value="Bond, Copeley, Faulkner, or Language House Single">Bice, Lambeth, Faulkner, or Language House Single</option>
+                      <option value="Brown Residential College">Brown Residential College</option>
+                      <option value="Hereford Residential College or IRC Double">Hereford Residential College or IRC Double</option>
+                      <option value="Hereford Residential College Single">Hereford Residential College single</option>
+                      <option value="IRC Single">IRC Single</option>
+                      <option value="IRC Single w/Bath">IRC Single with private bath</option>
+                      <option value="Johnson, Malone, and Weedon double">Johnson, Malone, and Weedon double</option>
+                      <option value="Johnson, Malone and Weedon single">Johnson, Malone and Weedon single</option>
+                      <option value="The Lawn">The Lawn</option>
+                      <option value="The Lawn (no fireplace)">The Lawn (no fireplace)</option>
+                    </select>
+
+                    <div class="settings">
+                      <label for="side" id=housing_label
+                        name=housing_label
+                        style="display:none">Housing Cost: </label>
+                      <input type="text" size="40" placeholder="Enter total spent over academic year" style="display:none;" name="housing_custom_text_input" />
+                    </div>
+
+
+                    <hr/>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="#232D4B" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0
+                          1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon
+                          points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                      <p class="requiredField">Books & Supplies
+                        Cost: </p>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio"id="UVA Official Recommendation" name="books" value="UVA Official Recommendation">
+                        <label class="form-check-label" for="UVA Official Recommendation">UVA Official Annual Estimate</label><br>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="customBooks" name="books"value="customBooks">
+                        <label class="form-check-label"
+                          for="customBooks">Enter Cost</label><br>
+                      </div>
+                      <br>
+                      <div class="settings">
+                        <label for="side" id=books_label
+                          name=books_label
+                          style="display:none">Books & Supplies Cost: </label>
+                        <input type="text" size="33"
+                          placeholder="Enter total spent over academic year"
+                          style="display:none;"
+                          name="books_custom_text_input" />
+                      </div>
+
+                      <hr/>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                          width="16" height="16"
+                          class="bi bi-truck" viewBox="0 0 16 16">
+                          <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5
+                            1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1
+                            1.17.563l1.481 1.85a1.5 1.5 0 0 1
+                            .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2
+                            2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5
+                            1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999
+                            1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0
+                            1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5
+                            0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12
+                            10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0
+                            .5-.5V8.35a.5.5 0 0
+                            0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02
+                            6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0
+                            0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                            />
+                          </svg>
+                          <p class="requiredField">Transportation Cost: </p>
+                          <h4>If international, please enter a custom cost.</h4>
+                          <div class="mb-2">
+                            <select class="custom-select"
+                              name="travel"
+                              id="travel" style="width: 485px;">
+                              <option value="0">Select State</option>
+                              <option value="Alabama">Alabama</option>
+                              <option value="Alaska">Alaska</option>
+                              <option value="Arizona">Arizona</optiion>
+                              <option value="Arkansas">Arkansas</option>
+                              <option value="California">California</option>
+                              <option value="Colorado">Colorado</option>
+                              <option value="Connecticut">Connecticut</option>
+                              <option value="Delaware">Delaware</option>
+                              <option value="District of Columbia">District of Columbia</option>
+                              <option value="Florida">Florida</option>
+                              <option value="Georgia">Georgia</option>
+                              <option value="Hawaii">Hawaii</option>
+                              <option value="Idaho">Idaho</option>
+                              <option value="Illinois">Illinois</option>
+                              <option value="Indiana">Indiana</option>
+                              <option value="Iowa">Iowa</option>
+                              <option value="Kansas">Kansas</option>
+                              <option value="Kentucky">Kentucky</option>
+                              <option value="Louisiana">Louisiana</option>
+                              <option value="Maine">Maine</option>
+                              <option value="Maryland">Maryland</option>
+                              <option value="Massachusetts">Massachusetts</option>
+                              <option value="Michigan">Michigan</option>
+                              <option value="Minnesota">Minnesota</option>
+                              <option value="Mississippi">Mississippi</option>
+                              <option value="Missouri">Missouri</option>
+                              <option value="Montana">Montana</option>
+                              <option value="Nebraska">Nebraska</option>
+                              <option value="Nevada">Nevada</option>
+                              <option value="New Hampshire">New Hampshire</option>
+                              <option value="New Jersey">New Jersey</option>
+                              <option value="New Mexico">New Mexico</option>
+                              <option value="New York">New York</option>
+                              <option value="North Carolina">North Carolina</option>
+                              <option value="North Dakota">North Dakota</option>
+                              <option value="Ohio">Ohio</option>
+                              <option value="Oklahoma">Oklahoma</option>
+                              <option value="Oregon">Oregon</option>
+                              <option value="Pennsylvania">Pennsylvania</option>
+                              <option value="Puerto Rico">Puerto Rico</option>
+                              <option value="Rhode Island">Rhode Island</option>
+                              <option value="South Carolina">South Carolina</option>
+                              <option value="South Dakota">South Dakota</option>
+                              <option value="Tennessee">Tennessee</option>
+                              <option value="Texas">Texas</option>
+                              <option value="Utah">Utah</option>
+                              <option value="Vermont">Vermont</option>
+                              <option value="Virginia">Virginia</option>
+                              <option value="Virgin Islands">Virgin Islands</option>
+                              <option value="Washington">Washington</option>
+                              <option value="West Virginia">West Virginia</option>
+                              <option value="Wisconsin">Wisconsin</option>
+                              <option value="Wyoming">Wyoming</option>
+                              <option value="International">International (Enter Cost)</option>
+                            </select>
+                          </div>
+
+                          <div class="settings">
+                            <label for="side" id=travel_label
+                              name=travel_label
+                              style="display:none">Transportation Cost:
+                            </label>
+                            <input type="text" style="display:none;" name="state_custom_text_input" placeholder="Enter transportation cost" size="30"/>
+                          </div>
+
+
+                          <hr/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                              height="16" viewBox="0 0 24 24" fill="none"
+                              stroke="#232D4B" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"><circle
+                                cx="10" cy="20.5" r="1" /><circle cx="18"
+                                  cy="20.5" r="1" /><path d="M2.5 2.5h3l2.7
+                                    12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0
+                                    2-1.6l1.6-8.4H7.1" /></svg>
+                                  <p class="requiredField">Dining Cost:
+                                  </p>
+                                  <h4>First-year students must choose
+                                    the 'All Access' meal plan.</h4>
+                                  <div class="mb-2">
+                                    <select class="custom-select"
+                                      name="dining"
+                                      id="dining" style="width: 485px;">
+                                      <option value="0">Select Dining</option>
+                                      <option value="All Access">All Access Meal Plan</option>
+                                      <option value="Block 160">Block 160 Meal Plan</option>
+                                      <option value="Block 100">Block 100 Meal Plan</option>
+                                      <option value="Block 50">Block 50 Meal Plan</option>
+                                      <option value="customDining">Enter Cost</option>
+                                    </select>
+                                  </div>
+
+
+                                  <div class="settings">
+                                    <label for="side" id=dining_label
+                                      name=dining_label
+                                      style="display:none">Dining Cost:
+                                    </label>
+                                    <input type="text" size="40" placeholder="Enter your average weekly grocery cost" style="display:none;" name="dining_custom_text_input"/>
+                                  </div>
+
+
+                                  <hr/>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                      width="16" height="16" viewBox="0 0 24 24"
+                                      fill="none" stroke="#232D4B"
+                                      stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"><path d="M20
+                                        21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle
+                                        cx="12" cy="7" r="4"></circle></svg>
+                                    <p class="requiredField">Personal Expenses: </p>
+                                    <div class="form-check
+                                      form-check-inline">
+                                      <input class="form-check-input" type="radio" id="None_misc" name="misc" value="None">
+                                      <label class="form-check-label"
+                                        for="None_misc">None</label><br>
+                                    </div>
+                                    <div class="form-check
+                                      form-check-inline">
+                                      <input class="form-check-input" type="radio" id="customMisc" name="misc" value="customMisc">
+                                      <label class="form-check-label"
+                                        for="customMisc">Enter Cost</label><br>
+                                    </div>
+                                    <div class="settings">
+                                      <label for="side" id=misc_label
+                                        name=misc_label
+                                        style="display:none">Personal Expenses:
+                                      </label>
+                                      <input type="text" style="display:none;" name="misc_custom_text_input" placeholder="Enter all other expenses cost" size="30"/>
+                                    </div>
+                                    <hr/>
+                                    
+
+
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+                                      <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
+                                      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                                    </svg>
+                                    <p class="requiredField">Scholarships & Financial Aid: </p>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" id="None_aid" name="faid" value="None">
+                                      <label class="form-check-label"for="None_aid">None</label><br>
+                                    </div>
+                                    <div class="form-check
+                                      form-check-inline">
+                                      <input class="form-check-input" type="radio" id="customFAid" name="faid" value="customFAid">
+                                      <label class="form-check-label" for="customFAid">Enter Amount</label><br>
+                                    </div>
+                                    <div class="settings">
+                                      <label for="side" id=faid_label
+                                        name=faid_label
+                                        style="display:none">Aid Amount:
+                                      </label>
+                                      <input type="text" style="display:none;" name="faid_custom_text_input" placeholder="Enter amount awarded over academic year" size="40"/>
+                                    </div>
+                                    <hr/>
+                                    
+                                      <div class="row
+                                        justify-content-center">
+                                        <input class="btn btn-danger" type="submit" name="submit">
+                                      </div>
+
+                                    </form>
+                                  </div>
+
+                                  <!-- script for custom housing input-->
+  <script>  
+    let selections = document.form.housing;
+    selections.addEventListener('change', function () {
+      if (document.getElementById("housing").value === "customHousing") {
+        document.form.housing_custom_text_input.style.display = "";
+        document.getElementById("housing_label").style.display = "";
+        document.getElementById("housinguppertext").style.display = "none";
+        document.getElementById("ongroundshousing").style.display = "none";
+      }
+      else if (document.getElementById("housing").value === "On-Grounds Upperclassmen") {
+        document.getElementById("housinguppertext").style.display = "";
+        document.getElementById("ongroundshousing").style.display = "";
+        document.form.housing_custom_text_input.style.display = "none";
+        document.getElementById("housing_label").style.display = 'none';
+
+      }
+      else {
+        document.form.housing_custom_text_input.style.display = "none";
+        document.getElementById("housing_label").style.display = 'none';
+        document.getElementById("housinguppertext").style.display = "none";
+        document.getElementById("ongroundshousing").style.display = "none";
+      }
+    });
+
+    // <!-- script for custom books input-->
+    let selections1 = document.form.books;
+    for (let i = 0; i < selections1.length; i++) {
+      if (selections1[i].value === "customBooks") {
+        selections1[i].addEventListener('change', function () {
+          document.form.books_custom_text_input.style.display = "";
+          document.getElementById("books_label").style.display = "";
+        });
+      } else selections1[i].addEventListener("change", function () {
+        document.form.books_custom_text_input.style.display = "none";
+        document.getElementById("books_label").style.display = 'none';
+
+      });
+    }
+
+    // script for custom state input
+    document.form.state_custom_text_input.style.display = "none";
+    let selections2 = document.form.travel;
+    selections2.addEventListener('change', function () {
+      if (document.getElementById("travel").value === "International") {
+        document.form.state_custom_text_input.style.display = "";
+        document.getElementById("travel_label").style.display = "";
+      }
+      else {
+        document.form.state_custom_text_input.style.display = "none";
+        document.getElementById("travel_label").style.display = 'none';
+      }
+    });
+
+    // script for custom dining input
+    document.form.dining_custom_text_input.style.display = "none";
+    let selections3 = document.form.dining;
+    selections3.addEventListener('change', function () {
+      if (document.getElementById("dining").value === "customDining") {
+        document.form.dining_custom_text_input.style.display = "";
+        document.getElementById("dining_label").style.display = "";
+      }
+      else {
+        document.form.dining_custom_text_input.style.display = "none";
+        document.getElementById("dining_label").style.display = 'none';
+      }
+    });
+
+
+    // script for custom miscellaneous input
+    let selections4 = document.form.misc;
+    for (let i = 0; i < selections4.length; i++) {
+      if (selections4[i].value === "customMisc") {
+        selections4[i].addEventListener('change', function () {
+          document.form.misc_custom_text_input.style.display = "";
+          document.getElementById("misc_label").style.display = "";
+        });
+      } else selections4[i].addEventListener("change", function () {
+        document.form.misc_custom_text_input.style.display = "none";
+        document.getElementById("misc_label").style.display = 'none';
+      });
+    }
+
+    // script for custom scholarship input
+    let selections8 = document.form.faid;
+    for (let i = 0; i < selections8.length; i++) {
+      if (selections8[i].value === "customFAid") {
+        selections8[i].addEventListener('change', function () {
+          document.form.faid_custom_text_input.style.display = "";
+          document.getElementById("faid_label").style.display = "";
+        });
+      } else selections8[i].addEventListener("change", function () {
+        document.form.faid_custom_text_input.style.display = "none";
+        document.getElementById("faid_label").style.display = 'none';
+      });
+    }
+    //bind to first year options
+    var bind = false;
+    let selections5 = document.form.year;
+    for (let i = 0; i < selections5.length; i++) {
+      if (selections5[i].value === "First") {
+        selections5[i].addEventListener('change', function () {
+          document.getElementById("housing").value = "On-Grounds First Year";
+          document.getElementById("dining").value = "All Access";
+          document.getElementById('dining').setAttribute("disabled", "disabled");
+          document.getElementById('housing').setAttribute("disabled", "disabled");
+          document.getElementById("ongroundshousing").style.display = "none";
+          document.form.housing_custom_text_input.style.display = "none";
+          document.getElementById("housing_label").style.display = 'none';
+          document.getElementById("housinguppertext").style.display = "none";
+          document.form.dining_custom_text_input.style.display = "none";
+          document.getElementById("dining_label").style.display = 'none';
+          document.getElementById("housing").classList.add("selectGrey");
+          document.getElementById("dining").classList.add("selectGrey");
+          bind = true;
+        });
+      }
+      else selections5[i].addEventListener("change", function () {
+        if(bind===true){
+        document.getElementById('dining').removeAttribute('disabled');
+        document.getElementById('housing').removeAttribute('disabled');
+        document.getElementById("housing").value = "0";
+        document.getElementById("dining").value = "0";
+        document.getElementById("housing").classList.remove("selectGrey");
+        document.getElementById("dining").classList.remove("selectGrey");
+        bind = false;
+      }
+      });
+    }  
+  
+
+    let submit = document.form.submit;
+    submit.addEventListener('change', function () {
+      document.getElementById('dining').removeAttribute('disabled');
+      document.getElementById('housing').removeAttribute('disabled');
+      document.getElementById('travel').removeAttribute('disabled');
+    });
+
+    let selections6 = document.form.school;
+    selections6.addEventListener('change', function () {
+      if (document.getElementById("school").value === "School of Commerce (McIntire)" || document.getElementById("school").value === "School of Leadership and Public Policy (Batten)") {
+        document.getElementById('First').setAttribute("disabled", "disabled");
+        document.getElementById('Second').setAttribute("disabled", "disabled");
+      }
+      else {
+        document.getElementById('First').removeAttribute('disabled');
+        document.getElementById('Second').removeAttribute('disabled');
+      }
+    });
+  //Bind: Virginian for residency -> Virginian in travel
+  var bind2 = false;
+  let selections7 = document.form.residency;
+    for (let i = 0; i < selections7.length; i++) {
+      if (selections7[i].value === "Virginian") {
+         selections7[i].addEventListener('change', function () {
+           document.getElementById("travel").value = "Virginia";
+           document.form.state_custom_text_input.style.display = "none";
+           document.getElementById("travel_label").style.display = 'none';
+           bind2 = true;
+         });
+       }
+       else selections7[i].addEventListener("change", function () {
+        if(bind2==true){
+         document.getElementById("travel").value = "0";
+         bind2 = false;
+        }
+       });
+      } 
+    
+    /* If browser back button was used, flush cache */
+
+ 
+  </script>
+<!--padding for body-->
+<p class="p-3"></p>
+<!--footer-->
+<div class="container-fluid px-0"><!--px-0 to fill width-->
+  <div id="footer" class="footer">
+    <footer class="p-1 text-center"
+      style="background-color: #232D4B;">
+      <div class="container">
+        <p class="lead text-white"
+          style="font-family:libre franklin">
+          &copy; UVA Development Hub 2021
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+
+</html>
