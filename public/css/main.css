@@ -1,0 +1,138 @@
+
+.custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+    background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+    border:1px solid black;
+    border-radius:10px;
+    font-size: 16px;
+    color: #232D4B;
+    font-size: 18px;
+    background-color: white;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400
+  }
+  .select {
+    position: relative;
+    display: block;
+    width: 15em;
+    height: 2em;
+    line-height: 3;
+    overflow: hidden;
+    border-radius: .25em;
+    padding-bottom:10px;
+  }
+  
+  .select::after{
+    background: none;
+    background-image: none;
+  }
+  
+  /*used for graying out dropdowns*/
+  .selectGrey {
+    color:#232D4B;
+    background: none !important;
+    background-color:#cfcfcf!important;
+    
+  }
+  
+  /*used for getting rid of dropdown arrow*/
+  
+  p{
+    font-size: 22px;
+    color:#232D4B;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400
+  }
+  
+  label{
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #232D4B;
+  }
+  
+  input[type=submit]{
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    background-color: #232D4B;
+    border-radius: 12px;
+  }
+  
+  h3{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 18px;
+    color:#232D4B;
+  }
+  
+  h4{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 16px;
+    color:#232D4B;
+  }
+  
+  div.settings {
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+  }
+  body {background-color:#F1F1EF;}
+  div.settings label       { text-align:right; }
+  div.settings label:after { /*used to add asterisks in custom input boxes*/
+    content: "*";
+    color: red;}
+  
+  .requiredField::after {/*used for asterisks in required fields*/
+    content: "*";
+    color: red;
+  }
+  .asterisk::before { /*used for * = required fields at top of document*/
+    font-family: 'Roboto Slab', serif;
+    content: "*";
+    color: red;
+  }
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border:  1rem solid  #E57200;
+    border-top: 1px solid  #E57200;
+    border-bottom:3px solid  #E57200;
+  } 
+  
+  .table{
+    font-size: 18px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 400;
+  }
+  a{
+    color:#232D4B;
+  }
+  
+  input[type=button]{
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+    background-color: #232D4B;
+    border-radius: 0px;
+  }
+  
+  h6{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 16px;
+    color:#232D4B;
+  }
+  
+  
+  
