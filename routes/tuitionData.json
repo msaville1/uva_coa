@@ -1,0 +1,382 @@
+{
+    "schools": {
+        "College of Arts and Sciences": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 14188,
+                    "fees": 3230,
+                    "subtotal": 17418
+                },
+                {
+                    "year": 2,
+                    "tuition": 14188,
+                    "fees": 3230,
+                    "subtotal": 17418
+                },
+                {
+                    "year": 3,
+                    "tuition": 16888,
+                    "fees": 3230,
+                    "subtotal": 20118
+                },
+                {
+                    "year": 4,
+                    "tuition": 14188,
+                    "fees": 3230,
+                    "subtotal": 17418
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 48036,
+                    "fees": 3912,
+                    "subtotal": 51948
+                },
+                {
+                    "year": 2,
+                    "tuition": 48036,
+                    "fees": 3912,
+                    "subtotal": 51948
+                },
+                {
+                    "year": 3,
+                    "tuition": 16888,
+                    "fees": 3912,
+                    "subtotal": 54648
+                },
+                {
+                    "year": 4,
+                    "tuition": 48036,
+                    "fees": 3912,
+                    "subtotal": 51948
+                }
+            ]
+        },
+        "School of Architecture": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 15224,
+                    "fees": 3292,
+                    "subtotal": 18516
+                },
+                {
+                    "year": 2,
+                    "tuition": 15224,
+                    "fees": 3292,
+                    "subtotal": 18516
+                },
+                {
+                    "year": 3,
+                    "tuition": 15224,
+                    "fees": 3292,
+                    "subtotal": 18516
+                },
+                {
+                    "year": 4,
+                    "tuition": 15224,
+                    "fees": 3292,
+                    "subtotal": 18516
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 49110,
+                    "fees": 3974,
+                    "subtotal": 53084
+                },
+                {
+                    "year": 2,
+                    "tuition": 49110,
+                    "fees": 3974,
+                    "subtotal": 53084
+                },
+                {
+                    "year": 3,
+                    "tuition": 49110,
+                    "fees": 3974,
+                    "subtotal": 53084
+                },
+                {
+                    "year": 4,
+                    "tuition": 49110,
+                    "fees": 3974,
+                    "subtotal": 53084
+                }
+            ]
+        },
+        "School of Education and Human Development": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 14188,
+                    "fees": 3242,
+                    "subtotal": 17430
+                },
+                {
+                    "year": 2,
+                    "tuition": 14188,
+                    "fees": 3242,
+                    "subtotal": 17430
+                },
+                {
+                    "year": 3,
+                    "tuition": 14188,
+                    "fees": 3242,
+                    "subtotal": 17430
+                },
+                {
+                    "year": 4,
+                    "tuition": 14188,
+                    "fees": 3242,
+                    "subtotal": 17430
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 48036,
+                    "fees": 3924,
+                    "subtotal": 51960
+                },
+                {
+                    "year": 2,
+                    "tuition": 48036,
+                    "fees": 3924,
+                    "subtotal": 51960
+                },
+                {
+                    "year": 3,
+                    "tuition": 48036,
+                    "fees": 3924,
+                    "subtotal": 51960
+                },
+                {
+                    "year": 4,
+                    "tuition": 48036,
+                    "fees": 3924,
+                    "subtotal": 51960
+                }
+            ]
+        },
+        "School of Commerce (McIntire)": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 2,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 3,
+                    "tuition": 24796,
+                    "fees": 3308,
+                    "subtotal": 28104
+                },
+                {
+                    "year": 4,
+                    "tuition": 24796,
+                    "fees": 3308,
+                    "subtotal": 28104
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 2,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 3,
+                    "tuition": 59040,
+                    "fees": 3990,
+                    "subtotal": 63030
+                },
+                {
+                    "year": 4,
+                    "tuition": 59040,
+                    "fees": 3990,
+                    "subtotal": 63030
+                }
+            ]
+        },
+        "School of Engineering and Applied Science": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 22556,
+                    "fees": 3242,
+                    "subtotal": 25808
+                },
+                {
+                    "year": 2,
+                    "tuition": 21566,
+                    "fees": 3242,
+                    "subtotal": 24808
+                },
+                {
+                    "year": 3,
+                    "tuition": 19566,
+                    "fees": 3242,
+                    "subtotal": 22808
+                },
+                {
+                    "year": 4,
+                    "tuition": 19566,
+                    "fees": 3242,
+                    "subtotal": 22808
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 56730,
+                    "fees": 3924,
+                    "subtotal": 60654
+                },
+                {
+                    "year": 2,
+                    "tuition": 55730,
+                    "fees": 3924,
+                    "subtotal": 59654
+                },
+                {
+                    "year": 3,
+                    "tuition": 54730,
+                    "fees": 3924,
+                    "subtotal": 58654
+                },
+                {
+                    "year": 4,
+                    "tuition": 53694,
+                    "fees": 3924,
+                    "subtotal": 57618
+                }
+            ]
+        },
+        "School of Leadership and Public Policy (Batten)": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 2,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 3,
+                    "tuition": 24742,
+                    "fees": 3258,
+                    "subtotal": 28000
+                },
+                {
+                    "year": 4,
+                    "tuition": 24742,
+                    "fees": 3258,
+                    "subtotal": 28000
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 2,
+                    "tuition": 0,
+                    "fees": 0,
+                    "subtotal": 0
+                },
+                {
+                    "year": 3,
+                    "tuition": 58956,
+                    "fees": 3940,
+                    "subtotal": 62896
+                },
+                {
+                    "year": 4,
+                    "tuition": 58956,
+                    "fees": 3940,
+                    "subtotal": 62896
+                }
+            ]
+        },
+        "School of Nursing": {
+            "instate": [
+                {
+                    "year": 1,
+                    "tuition": 18620,
+                    "fees": 3246,
+                    "subtotal": 21506
+                },
+                {
+                    "year": 2,
+                    "tuition": 18620,
+                    "fees": 3246,
+                    "subtotal": 21506
+                },
+                {
+                    "year": 3,
+                    "tuition": 16260,
+                    "fees": 3246,
+                    "subtotal": 19506
+                },
+                {
+                    "year": 4,
+                    "tuition": 16260,
+                    "fees": 3246,
+                    "subtotal": 19506
+                }
+            ],
+            "outstate": [
+                {
+                    "year": 1,
+                    "tuition": 52218,
+                    "fees": 3928,
+                    "subtotal": 56146
+                },
+                {
+                    "year": 2,
+                    "tuition": 52218,
+                    "fees": 3928,
+                    "subtotal": 56146
+                },
+                {
+                    "year": 3,
+                    "tuition": 51218,
+                    "fees": 3928,
+                    "subtotal": 55146
+                },
+                {
+                    "year": 4,
+                    "tuition": 50182,
+                    "fees": 3928,
+                    "subtotal": 54110
+                }
+            ]
+        }
+    }
+}
