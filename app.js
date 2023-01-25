@@ -32,7 +32,7 @@ app.get('/contact', (req, res) => {
 app.get('/contactSubmission', (req, res) => {
     res.render('contactSubmission', { text: 'Contact Submission Page'});
     // URL at which MongoDB service is running
-    var url = "mongodb+srv://admin:falcons24@cluster0.mi76l.mongodb.net/UVA_COA";
+    var url = "mongodb+srv://CACS:2htNSu0fmuqp8Itm@cluster0.ovf6qf7.mongodb.net/?retryWrites=true&w=majority";
     var database;
     // A Client to MongoDB
     var MongoClient = require('mongodb').MongoClient;
