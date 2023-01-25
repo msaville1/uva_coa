@@ -29,32 +29,32 @@ app.get('/529Criteria', (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact', { text: 'Contact Page'});
 });
-app.get('/contactSubmission', (req, res) => {
-    res.render('contactSubmission', { text: 'Contact Submission Page'});
+//app.get('/contactSubmission', (req, res) => {
+//    res.render('contactSubmission', { text: 'Contact Submission Page'});
     // URL at which MongoDB service is running
-    var url = "mongodb+srv://CACS:2htNSu0fmuqp8Itm@cluster0.ovf6qf7.mongodb.net/?retryWrites=true&w=majority";
-    var database;
+//    var url = "mongodb+srv://CACS:2htNSu0fmuqp8Itm@cluster0.ovf6qf7.mongodb.net/?retryWrites=true&w=majority";
+//    var database;
     // A Client to MongoDB
-    var MongoClient = require('mongodb').MongoClient;
-    var contact_json = {};
-    contact_json["Name"] = req.query.inputName;
-    contact_json["Email"] = req.query.inputEmail;
-    contact_json["Details"] = req.query.details;
+//    var MongoClient = require('mongodb').MongoClient;
+//    var contact_json = {};
+//    contact_json["Name"] = req.query.inputName;
+//    contact_json["Email"] = req.query.inputEmail;
+//    contact_json["Details"] = req.query.details;
 
-    MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
+//    MongoClient.connect(url, function(err, db) {
+//        if (err) throw err;
         //console.log("Connected to MongoDB! (contact)");
-        database = db.db("UVA_COA");
-        database.collection("Contact Form Inputs").insert(contact_json, function(err, result){
-            if(err){
-                console.log(err);
-            }else{
+ //       database = db.db("UVA_COA");
+ //       database.collection("Contact Form Inputs").insert(contact_json, function(err, result){
+ //           if(err){
+ //              console.log(err);
+ //           }else{
              //   console.log(result);
-            }
-        });
-        db.close();
-    });
-});
+//            }
+//        });
+//        db.close();
+//    });
+//});
 
 app.get('', (req, res) => {
     res.render('index', { text: 'This is EJS'})
