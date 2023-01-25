@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'UVA-COA'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53C85E40B9DD4B0ABC8F22C5BA565045 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3DE4F833B87945A88DFBC4A92B5E2FD3 }}
           package: .
