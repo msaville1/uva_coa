@@ -1,5 +1,9 @@
 //import
-const express = require('express');
+var express = require('express');
+var server = express();
+var options =  {
+  index: 'index.html'
+};
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -64,4 +68,6 @@ app.get('', (req, res) => {
 });
 
 //Listen on port
-app.listen(port, () => console.info(`Listen on port ${port}`));
+server.use('/', express.static('/home/site/wwwroot', options));
+server.listen(process.env.PORT);
+
