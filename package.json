@@ -20,10 +20,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbo4vv/UVA_COA.git"
+    "url": "git+https://github.com/msaville1/uva_coa.git"
   },
   "bugs": {
-    "url": "https://github.com/jbo4vv/UVA_COA/issues"
+    "url": "https://github.com/msaville1/uva_coa/issues"
   },
-  "homepage": "https://github.com/jbo4vv/UVA_COA#readme"
+  "homepage": "https://github.com/msaville1/uva_coa/blob/main/README.md"
 }
