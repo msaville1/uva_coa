@@ -15,8 +15,8 @@ var indexRouter = require("./routes/index");
 
 async function getApp() {
   var connectionInfo = await configData.getConnectionInfo();
- // import mongoose from 'mongoose'
- // mongoose.connect("mongodb+srv://CACS:2htNSu0fmuqp8Itm@cluster0.ovf6qf7.mongodb.net/?retryWrites=true&w=majority");
+  import mongoose from 'mongoose'
+  mongoose.connect("mongodb+srv://CACS:2htNSu0fmuqp8Itm@cluster0.ovf6qf7.mongodb.net/?retryWrites=true&w=majority");
   var app = express();
   var port = normalizePort(process.env.PORT || '3000');
   app.set('port', port);
